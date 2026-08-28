@@ -1735,19 +1735,6 @@
     }
 
     @media(max-width:900px){
-      .stars{
-        animation:none;
-        opacity:0.12;
-      }
-
-      .glow{
-        display:none;
-      }
-
-      .beat-visualizer{
-        display:none;
-      }
-
       nav{
         min-height:74px;
         padding:10px 5%;
@@ -2508,6 +2495,9 @@
       guv:{ speed:0.009, beat:0.45, drift:2.8, pulse:0.060, height:1.22, alpha:0.56 }  // bass: slower, heavier low-end
     };
 
+    const lowPowerMotion = window.matchMedia('(max-width:900px), (hover:none), (pointer:coarse)').matches;
+    const visualizerBarCount = lowPowerMotion ? 84 : 120;
+
     document.querySelectorAll('.beat-visualizer').forEach((canvas) => {
       const ctx = canvas.getContext('2d');
       const wrapper = canvas.closest('.member-img');
@@ -2515,7 +2505,7 @@
       const memberStyle = getComputedStyle(wrapper);
       const hue = parseFloat(memberStyle.getPropertyValue('--member-hue')) || 34;
       const motion = beatMotionByMember[section?.id] || beatMotionByMember.kurt;
-      const num = 120;
+      const num = visualizerBarCount;
       const heights = Array.from({length:num}, (_, i) => {
         const t = i / num;
         return 4 + Math.random() * 7 + 3.5 * Math.sin(t * Math.PI * 6);
@@ -2537,7 +2527,7 @@
 
     function resizeBeatVisualizer(v) {
       const size = Math.max(220, Math.round(v.canvas.offsetWidth));
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, lowPowerMotion ? 1.35 : 2);
 
       if (v.canvas.width !== Math.round(size * dpr) || v.canvas.height !== Math.round(size * dpr)) {
         v.canvas.width = Math.round(size * dpr);
@@ -2546,11 +2536,7 @@
       }
     }
 
-    const lowPowerMotion = window.matchMedia('(max-width:900px), (hover:none), (pointer:coarse)').matches;
-
     function drawBeatVisualizers() {
-      if (lowPowerMotion) return;
-
       beatVisualizers.forEach((v) => {
         resizeBeatVisualizer(v);
 
