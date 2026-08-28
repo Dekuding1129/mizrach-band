@@ -1427,6 +1427,72 @@
       margin:0;
     }
 
+    .full-song-links{
+      margin:0 20px 22px;
+      padding:18px;
+      border:1px solid rgba(255,157,0,0.24);
+      border-radius:20px;
+      background:rgba(255,255,255,0.035);
+      text-align:center;
+    }
+
+    .full-song-links h4{
+      color:#fff;
+      font-family:'Cinzel',serif;
+      font-size:1.05rem;
+      letter-spacing:1px;
+      margin-bottom:6px;
+    }
+
+    .full-song-links p{
+      color:#bfa98b;
+      font-size:0.74rem;
+      margin-bottom:14px;
+    }
+
+    .full-song-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .full-song-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:145px;
+      padding:10px 16px;
+      border:1px solid rgba(255,157,0,0.32);
+      border-radius:999px;
+      color:#fff;
+      text-decoration:none;
+      font-size:0.74rem;
+      font-weight:700;
+      letter-spacing:1px;
+      transition:transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .full-song-link:hover,
+    .full-song-link:focus-visible{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,0.70);
+      box-shadow:0 0 20px rgba(255,157,0,0.20);
+      outline:none;
+    }
+
+    .full-song-link.spotify:hover,
+    .full-song-link.spotify:focus-visible{
+      background:#1DB954;
+      border-color:#1DB954;
+    }
+
+    .full-song-link.youtube:hover,
+    .full-song-link.youtube:focus-visible{
+      background:#FF0000;
+      border-color:#FF0000;
+    }
+
 
     /* FOOTER */
 
@@ -2295,6 +2361,15 @@
           <span>Soon to release</span>
           <strong>Forever</strong>
           <p>New songs and full releases will be added here once the files are ready.</p>
+        </div>
+
+        <div class="full-song-links" aria-label="Listen to full songs">
+          <h4>Play Full Song</h4>
+          <p>Continue listening to MIZRACH PINAZ on your preferred platform.</p>
+          <div class="full-song-actions">
+            <a class="full-song-link spotify" href="https://open.spotify.com/artist/6H6jK1inJBjYuZkHbsGugY?si=PyqzZYswS9uq0SpYOXIoHwY" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a class="full-song-link youtube" href="https://www.youtube.com/channel/UChQcOywWlbR1g3jB80swPIQ" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
         </div>
 
       </div>
