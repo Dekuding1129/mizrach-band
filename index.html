@@ -673,6 +673,16 @@
       transform:scale(0.96) rotate(10deg);
     }
 
+    .member-img.is-loading::before{
+      opacity:0.78;
+      transform:scale(0.96) rotate(0deg);
+      animation:memberLoaderSpin 0.9s linear infinite;
+    }
+
+    @keyframes memberLoaderSpin{
+      to{ transform:scale(0.96) rotate(360deg); }
+    }
+
     .member-img .beat-visualizer{
       position:absolute;
       top:50%;
@@ -978,8 +988,11 @@
       border-top-color:#ffb52e;
       border-right-color:rgba(255,255,255,0.82);
       border-radius:50%;
+      transform:rotate(0deg);
       box-shadow:0 0 22px rgba(255,157,0,0.28), inset 0 0 12px rgba(255,157,0,0.10);
       animation:galleryLoaderSpin 0.9s linear infinite;
+      transform-origin:center;
+      will-change:transform;
       pointer-events:none;
     }
 
