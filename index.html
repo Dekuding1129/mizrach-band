@@ -2072,6 +2072,19 @@
     }
 
     @media(max-width:900px){
+      .stars{
+        animation:none;
+        opacity:0.12;
+      }
+
+      .glow{
+        display:none;
+      }
+
+      .beat-visualizer{
+        display:none;
+      }
+
       nav{
         min-height:74px;
         padding:10px 5%;
@@ -3016,7 +3029,11 @@
       }
     }
 
+    const lowPowerMotion = window.matchMedia('(max-width:900px), (hover:none), (pointer:coarse)').matches;
+
     function drawBeatVisualizers() {
+      if (lowPowerMotion) return;
+
       beatVisualizers.forEach((v) => {
         resizeBeatVisualizer(v);
 

@@ -1735,6 +1735,19 @@
     }
 
     @media(max-width:900px){
+      .stars{
+        animation:none;
+        opacity:0.12;
+      }
+
+      .glow{
+        display:none;
+      }
+
+      .beat-visualizer{
+        display:none;
+      }
+
       nav{
         min-height:74px;
         padding:10px 5%;
@@ -2244,63 +2257,63 @@
       <div class="gallery-grid" aria-label="MIZRACH band photo gallery">
 
         <button class="gallery-item wide" type="button" onclick="openModal(this)" aria-label="Open Kurt gallery photo">
-          <img src="_DSC0610a.jpg" alt="Kurt gallery photo" loading="eager" decoding="async">
+          <img src="_DSC0610a.jpg" alt="Kurt gallery photo" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item tall" type="button" onclick="openModal(this)" aria-label="Open band portrait photo">
-          <img src="_DSC0278a.jpg" alt="Band portrait gallery photo" loading="eager" decoding="async">
+          <img src="_DSC0278a.jpg" alt="Band portrait gallery photo" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open keys and rhythm gallery photo">
-          <img src="_DSC0224a.jpg" alt="Keys and rhythm gallery photo" loading="eager" decoding="async">
+          <img src="_DSC0224a.jpg" alt="Keys and rhythm gallery photo" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open rhythm section gallery photo">
-          <img src="_DSC0071-2a.jpg" alt="Rhythm section gallery photo" loading="eager" decoding="async">
+          <img src="_DSC0071-2a.jpg" alt="Rhythm section gallery photo" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open bass gallery photo">
-          <img src="_DSC0179a.jpg" alt="Bass gallery photo" loading="eager" decoding="async">
+          <img src="_DSC0179a.jpg" alt="Bass gallery photo" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item wide" type="button" onclick="openModal(this)" aria-label="Open imported band photo 01">
-          <img src="gallery/_DSC0369a.jpg" alt="Imported band gallery photo 01" loading="eager" decoding="async">
+          <img src="gallery/_DSC0369a.jpg" alt="Imported band gallery photo 01" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item tall" type="button" onclick="openModal(this)" aria-label="Open imported band photo 07">
-          <img src="gallery/_DSC0157a.jpg" alt="Imported band gallery photo 07" loading="eager" decoding="async">
+          <img src="gallery/_DSC0157a.jpg" alt="Imported band gallery photo 07" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item wide" type="button" onclick="openModal(this)" aria-label="Open imported band photo 09">
-          <img class="face-top" src="gallery/_DSC0418a.jpg" alt="Imported band gallery photo 09" loading="eager" decoding="async">
+          <img class="face-top" src="gallery/_DSC0418a.jpg" alt="Imported band gallery photo 09" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 10">
-          <img src="gallery/_DSC0624a.jpg" alt="Imported band gallery photo 10" loading="eager" decoding="async">
+          <img src="gallery/_DSC0624a.jpg" alt="Imported band gallery photo 10" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 11">
-          <img src="gallery/_DSC0061a.jpg" alt="Imported band gallery photo 11" loading="eager" decoding="async">
+          <img src="gallery/_DSC0061a.jpg" alt="Imported band gallery photo 11" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 15">
-          <img src="gallery/_DSC0177a.jpg" alt="Imported band gallery photo 15" loading="eager" decoding="async">
+          <img src="gallery/_DSC0177a.jpg" alt="Imported band gallery photo 15" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 17">
-          <img src="gallery/_DSC0062a.jpg" alt="Imported band gallery photo 17" loading="eager" decoding="async">
+          <img src="gallery/_DSC0062a.jpg" alt="Imported band gallery photo 17" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 20">
-          <img src="gallery/_DSC0078a.jpg" alt="Imported band gallery photo 20" loading="eager" decoding="async">
+          <img src="gallery/_DSC0078a.jpg" alt="Imported band gallery photo 20" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item wide" type="button" onclick="openModal(this)" aria-label="Open imported band photo 25">
-          <img src="gallery/_DSC0408a.jpg" alt="Imported band gallery photo 25" loading="eager" decoding="async">
+          <img src="gallery/_DSC0408a.jpg" alt="Imported band gallery photo 25" loading="lazy" decoding="async">
         </button>
 
         <button class="gallery-item" type="button" onclick="openModal(this)" aria-label="Open imported band photo 26">
-          <img src="gallery/_DSC0066a.jpg" alt="Imported band gallery photo 26" loading="eager" decoding="async">
+          <img src="gallery/_DSC0066a.jpg" alt="Imported band gallery photo 26" loading="lazy" decoding="async">
         </button>
 
       </div>
@@ -2533,7 +2546,11 @@
       }
     }
 
+    const lowPowerMotion = window.matchMedia('(max-width:900px), (hover:none), (pointer:coarse)').matches;
+
     function drawBeatVisualizers() {
+      if (lowPowerMotion) return;
+
       beatVisualizers.forEach((v) => {
         resizeBeatVisualizer(v);
 
