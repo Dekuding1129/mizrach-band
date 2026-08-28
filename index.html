@@ -377,9 +377,22 @@
       background-size:240% 100%, 100% 100%;
       background-position:-140% 0, 0 0;
       background-repeat:no-repeat;
-      animation:glassSweep 5.5s ease-in-out infinite;
+      animation:none;
       pointer-events:none;
       z-index:0;
+    }
+
+    .stat-card:hover::after,
+    .member-card:hover::after,
+    .music-box:hover::after,
+    .music-card:hover::after,
+    .gallery-wrap:hover::after,
+    .gallery-item:hover::after,
+    .tour-feature:hover::after,
+    .tour-card:hover::after,
+    .contact-panel:hover::after,
+    .contact-card:hover::after{
+      animation:glassSweep 1.25s ease-out 1;
     }
 
     @keyframes glassSweep{
@@ -968,7 +981,7 @@
       background-size:240% 100%, 100% 100%;
       background-position:-140% 0, 0 0;
       background-repeat:no-repeat;
-      animation:glassSweep 5.5s ease-in-out infinite;
+      animation:none;
       pointer-events:none;
     }
 
