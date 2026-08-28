@@ -370,14 +370,16 @@
       background:
         linear-gradient(118deg,
           transparent 0%,
-          rgba(255,255,255,0.075) 18%,
-          rgba(255,255,255,0.018) 30%,
+          rgba(255,255,255,0.22) 18%,
+          rgba(255,255,255,0.06) 30%,
           transparent 44%),
-        linear-gradient(180deg, rgba(255,255,255,0.035), transparent 28%);
+        linear-gradient(180deg, rgba(255,255,255,0.07), transparent 28%);
       background-size:240% 100%, 100% 100%;
       background-position:-140% 0, 0 0;
       background-repeat:no-repeat;
       animation:none;
+      opacity:0;
+      transition:opacity 0.18s ease;
       pointer-events:none;
       z-index:0;
     }
@@ -393,6 +395,7 @@
     .contact-panel:hover::after,
     .contact-card:hover::after{
       animation:glassSweep 1.25s ease-out 1;
+      opacity:1;
     }
 
     @keyframes glassSweep{
