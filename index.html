@@ -347,6 +347,43 @@
       backdrop-filter:blur(14px);
       box-shadow:0 0 20px rgba(255,157,0,0.10);
       transition:0.35s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Shared glass reflection: a subtle highlight that remains visible
+       without relying on hover or backdrop-filter support. */
+    .stat-card::after,
+    .member-card::after,
+    .music-box::after,
+    .music-card::after,
+    .gallery-wrap::after,
+    .tour-card::after,
+    .contact-card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:
+        linear-gradient(118deg,
+          transparent 0%,
+          rgba(255,255,255,0.075) 18%,
+          rgba(255,255,255,0.018) 30%,
+          transparent 44%),
+        linear-gradient(180deg, rgba(255,255,255,0.035), transparent 28%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .stat-card > *,
+    .member-card > *,
+    .music-box > *,
+    .music-card > *,
+    .gallery-wrap > *,
+    .tour-card > *,
+    .contact-card > *{
+      position:relative;
+      z-index:1;
     }
 
     .stat-card:hover{
@@ -909,7 +946,9 @@
       content:'';
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,0.78), transparent 52%);
+      background:
+        linear-gradient(118deg, transparent 0%, rgba(255,255,255,0.075) 18%, rgba(255,255,255,0.018) 30%, transparent 44%),
+        linear-gradient(to top, rgba(0,0,0,0.78), transparent 52%);
       pointer-events:none;
     }
 
@@ -944,6 +983,8 @@
     /* MUSIC SECTION */
 
     .music-box{
+      position:relative;
+      overflow:hidden;
       background:rgba(255,255,255,0.03);
       border:1px solid rgba(255,153,0,0.15);
       padding:60px;
@@ -974,6 +1015,8 @@
     }
 
     .music-card{
+      position:relative;
+      overflow:hidden;
       min-height:245px;
       padding:28px;
       border-radius:24px;
