@@ -2342,12 +2342,19 @@
     document.querySelectorAll('.member-img img').forEach((img) => {
       const portrait = img.closest('.member-img');
       let revealed = false;
+      let revealScheduled = false;
+      const loadingStarted = performance.now();
 
       const revealPortrait = () => {
-        if (revealed) return;
-        revealed = true;
-        portrait.classList.remove('is-loading');
-        portrait.classList.add('is-loaded');
+        if (revealed || revealScheduled) return;
+        revealScheduled = true;
+        const reveal = () => {
+          revealed = true;
+          portrait.classList.remove('is-loading');
+          portrait.classList.add('is-loaded');
+        };
+        const remaining = Math.max(0, 700 - (performance.now() - loadingStarted));
+        setTimeout(reveal, remaining);
       };
 
       const tryRevealPortrait = () => {
@@ -2378,13 +2385,20 @@
     document.querySelectorAll('.gallery-item img').forEach((img) => {
       const card = img.closest('.gallery-item');
       let revealed = false;
+      let revealScheduled = false;
+      const loadingStarted = performance.now();
       card.classList.add('is-loading');
 
       const revealGalleryImage = () => {
-        if (revealed) return;
-        revealed = true;
-        card.classList.remove('is-loading');
-        card.classList.add('is-loaded');
+        if (revealed || revealScheduled) return;
+        revealScheduled = true;
+        const reveal = () => {
+          revealed = true;
+          card.classList.remove('is-loading');
+          card.classList.add('is-loaded');
+        };
+        const remaining = Math.max(0, 700 - (performance.now() - loadingStarted));
+        setTimeout(reveal, remaining);
       };
 
       if (img.complete && img.naturalWidth > 0) {
