@@ -358,7 +358,10 @@
     .music-box::after,
     .music-card::after,
     .gallery-wrap::after,
+    .gallery-item::after,
+    .tour-feature::after,
     .tour-card::after,
+    .contact-panel::after,
     .contact-card::after{
       content:'';
       position:absolute;
@@ -371,8 +374,18 @@
           rgba(255,255,255,0.018) 30%,
           transparent 44%),
         linear-gradient(180deg, rgba(255,255,255,0.035), transparent 28%);
+      background-size:240% 100%, 100% 100%;
+      background-position:-140% 0, 0 0;
+      background-repeat:no-repeat;
+      animation:glassSweep 5.5s ease-in-out infinite;
       pointer-events:none;
       z-index:0;
+    }
+
+    @keyframes glassSweep{
+      0%, 14%{ background-position:-140% 0, 0 0; }
+      54%, 68%{ background-position:140% 0, 0 0; }
+      100%{ background-position:140% 0, 0 0; }
     }
 
     .stat-card > *,
@@ -380,7 +393,10 @@
     .music-box > *,
     .music-card > *,
     .gallery-wrap > *,
+    .gallery-item > *,
+    .tour-feature > *,
     .tour-card > *,
+    .contact-panel > *,
     .contact-card > *{
       position:relative;
       z-index:1;
@@ -949,6 +965,10 @@
       background:
         linear-gradient(118deg, transparent 0%, rgba(255,255,255,0.075) 18%, rgba(255,255,255,0.018) 30%, transparent 44%),
         linear-gradient(to top, rgba(0,0,0,0.78), transparent 52%);
+      background-size:240% 100%, 100% 100%;
+      background-position:-140% 0, 0 0;
+      background-repeat:no-repeat;
+      animation:glassSweep 5.5s ease-in-out infinite;
       pointer-events:none;
     }
 
