@@ -867,7 +867,40 @@
       object-position:center 30%;
       filter:saturate(1.05) contrast(1.05) brightness(0.76);
       transform:scale(1.02);
-      transition:transform 0.45s ease, filter 0.45s ease;
+      opacity:0;
+      transition:opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+    }
+
+    .gallery-item.is-loading::before{
+      content:'';
+      position:absolute;
+      z-index:2;
+      top:50%;
+      left:50%;
+      width:42px;
+      height:42px;
+      margin:-21px 0 0 -21px;
+      border:2px solid rgba(255,157,0,0.20);
+      border-top-color:#ffb52e;
+      border-right-color:rgba(255,255,255,0.82);
+      border-radius:50%;
+      box-shadow:0 0 22px rgba(255,157,0,0.28), inset 0 0 12px rgba(255,157,0,0.10);
+      animation:galleryLoaderSpin 0.9s linear infinite;
+      pointer-events:none;
+    }
+
+    .gallery-item.is-loading::after{
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,157,0,0.12), transparent 25%),
+        linear-gradient(to top, rgba(0,0,0,0.78), transparent 52%);
+    }
+
+    .gallery-item.is-loaded img{
+      opacity:1;
+    }
+
+    @keyframes galleryLoaderSpin{
+      to{ transform:rotate(360deg); }
     }
 
     .gallery-item.wide img{
@@ -2326,6 +2359,28 @@
         setTimeout(revealPortrait, 1400);
         window.addEventListener('load', tryRevealPortrait, { once:true });
       }
+    });
+
+    // Loading state for gallery photos
+    document.querySelectorAll('.gallery-item img').forEach((img) => {
+      const card = img.closest('.gallery-item');
+      let revealed = false;
+      card.classList.add('is-loading');
+
+      const revealGalleryImage = () => {
+        if (revealed) return;
+        revealed = true;
+        card.classList.remove('is-loading');
+        card.classList.add('is-loaded');
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        requestAnimationFrame(revealGalleryImage);
+        return;
+      }
+
+      img.addEventListener('load', revealGalleryImage, { once:true });
+      img.addEventListener('error', revealGalleryImage, { once:true });
     });
 
     // Circular beat visualizer hover effect for member portraits
