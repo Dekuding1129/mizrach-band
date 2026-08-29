@@ -676,7 +676,7 @@
     .member-img.is-loading::before{
       opacity:0.78;
       transform:scale(0.96) rotate(0deg);
-      animation:memberLoaderSpin 0.9s linear infinite;
+      animation:memberLoaderSpin 0.9s linear infinite !important;
     }
 
     @keyframes memberLoaderSpin{
@@ -990,7 +990,7 @@
       border-radius:50%;
       transform:rotate(0deg);
       box-shadow:0 0 22px rgba(255,157,0,0.28), inset 0 0 12px rgba(255,157,0,0.10);
-      animation:galleryLoaderSpin 0.9s linear infinite;
+      animation:galleryLoaderSpin 0.9s linear infinite !important;
       transform-origin:center;
       will-change:transform;
       pointer-events:none;
@@ -2948,7 +2948,7 @@
           portrait.classList.remove('is-loading');
           portrait.classList.add('is-loaded');
         };
-        const remaining = Math.max(0, 700 - (performance.now() - loadingStarted));
+        const remaining = Math.max(0, 1400 - (performance.now() - loadingStarted));
         setTimeout(reveal, remaining);
       };
 
@@ -2992,7 +2992,7 @@
           card.classList.remove('is-loading');
           card.classList.add('is-loaded');
         };
-        const remaining = Math.max(0, 700 - (performance.now() - loadingStarted));
+        const remaining = Math.max(0, 1400 - (performance.now() - loadingStarted));
         setTimeout(reveal, remaining);
       };
 
