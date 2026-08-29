@@ -908,6 +908,71 @@
       max-width:480px;
     }
 
+    /* LIVE SESSION */
+    .live-session-card{
+      display:grid;
+      grid-template-columns:minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap:28px;
+      align-items:center;
+      padding:24px;
+      border:1px solid rgba(255,157,0,0.22);
+      border-radius:30px;
+      background:linear-gradient(145deg, rgba(255,157,0,0.10), rgba(0,0,0,0.72)), rgba(255,255,255,0.03);
+      box-shadow:0 24px 60px rgba(0,0,0,0.42), inset 0 0 24px rgba(255,157,0,0.035);
+      overflow:hidden;
+    }
+
+    .live-video-wrap{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,157,0,0.26);
+      border-radius:22px;
+      background:#050505;
+      box-shadow:0 18px 38px rgba(0,0,0,0.42);
+    }
+
+    .live-video-wrap video{
+      display:block;
+      width:100%;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+      background:#050505;
+    }
+
+    .live-session-copy{
+      padding:10px 10px 10px 0;
+    }
+
+    .live-session-kicker{
+      display:inline-flex;
+      margin-bottom:14px;
+      color:#ff9d00;
+      font-size:0.70rem;
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .live-session-copy h3{
+      color:#fff;
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.8rem, 4vw, 3rem);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    .live-session-copy p{
+      color:#c9bba7;
+      line-height:1.8;
+      margin-bottom:24px;
+    }
+
+    .live-session-copy .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
     /* GALLERY SECTION */
 
     .gallery-wrap{
@@ -1914,6 +1979,25 @@
         display:none;
       }
 
+      .live-session-card{
+        grid-template-columns:1fr;
+        gap:16px;
+        padding:14px;
+        border-radius:22px;
+      }
+
+      .live-video-wrap{
+        border-radius:16px;
+      }
+
+      .live-session-copy{
+        padding:4px 6px 8px;
+      }
+
+      .live-session-copy .btn{
+        width:100%;
+      }
+
       .stat-card::after,
       .member-card::after,
       .music-box::after,
@@ -2764,6 +2848,7 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#members">Members</a></li>
+      <li><a href="#live-session">Live Session</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="gallery.html#music">Music</a></li>
       <li><a href="booking.html#tour">Tour</a></li>
@@ -2931,9 +3016,28 @@
 
   </section>
 
+  <!-- LIVE SESSION -->
+  <section id="live-session">
+    <div class="section-title">
+      <h2>Live Session</h2>
+      <p>Feel the atmosphere of MIZRACH PINAZ in performance.</p>
+    </div>
 
-
-
+    <div class="live-session-card">
+      <div class="live-video-wrap">
+        <video controls preload="metadata" playsinline poster="Mizrach-Cover.jpg" aria-label="MIZRACH PINAZ live session">
+          <source src="0415.mp4" type="video/mp4">
+          Your browser does not support HTML video.
+        </video>
+      </div>
+      <div class="live-session-copy">
+        <span class="live-session-kicker">From the stage</span>
+        <h3>Slow rock. Live energy.</h3>
+        <p>Watch a live MIZRACH moment and experience the emotion, atmosphere, and sound behind the songs.</p>
+        <a class="btn btn-secondary" href="https://www.youtube.com/channel/UChQcOywWlbR1g3jB80swPIQ" target="_blank" rel="noopener noreferrer">Watch full performance</a>
+      </div>
+    </div>
+  </section>
 
   <!-- IMAGE MODAL -->
   <div id="imageModal" class="modal" onclick="closeModal(event)">
