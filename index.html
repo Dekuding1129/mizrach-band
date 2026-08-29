@@ -1847,6 +1847,43 @@
 
     /* RESPONSIVE */
 
+    @media(min-width:769px) and (max-width:1180px){
+      nav{
+        padding-left:5%;
+        padding-right:5%;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+
+      nav ul li a{
+        font-size:0.82rem;
+        letter-spacing:0.7px;
+      }
+
+      section{
+        padding-left:6%;
+        padding-right:6%;
+      }
+
+      .member-feature{
+        max-width:100%;
+        gap:clamp(24px, 4vw, 42px);
+        padding:clamp(24px, 3vw, 36px);
+      }
+
+      .member-img{
+        width:clamp(150px, 20vw, 200px);
+        height:clamp(150px, 20vw, 200px);
+      }
+
+      .tour-grid,
+      .contact-grid{
+        gap:18px;
+      }
+    }
+
     @media(max-width:768px){
       nav{
         min-height:72px;
