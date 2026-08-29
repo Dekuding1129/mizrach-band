@@ -3021,6 +3021,7 @@
 
     // Circular beat visualizer hover effect for member portraits
     const beatVisualizers = [];
+    let modalOpen = false;
     const beatMotionByMember = {
       kurt:{ speed:0.030, beat:1.90, drift:2.2, pulse:0.035, height:0.92, alpha:0.52 }, // vocalist: ARv-fast rhythm, soft shape
       rav:{ speed:0.030, beat:1.90, drift:3.4, pulse:0.045, height:0.98, alpha:0.55 }, // guitar: ARv-fast rhythm, steady shape
@@ -3071,6 +3072,11 @@
     }
 
     function drawBeatVisualizers() {
+      if (modalOpen) {
+        requestAnimationFrame(drawBeatVisualizers);
+        return;
+      }
+
       beatVisualizers.forEach((v) => {
         resizeBeatVisualizer(v);
 
@@ -3400,6 +3406,7 @@
       const img = element.querySelector('img');
       
       if (!modal || !modalImage || !img) return;
+      modalOpen = true;
       modalImage.src = img.src;
       modalImage.alt = img.alt;
       modal.classList.add('show');
@@ -3412,6 +3419,7 @@
       if (event && event.target !== modal) return;
       
       modal.classList.remove('show');
+      modalOpen = false;
       document.body.style.overflow = 'auto';
     }
 
