@@ -2610,9 +2610,21 @@
         heights,
         time:Math.random() * 10,
         beatPhase:Math.random() * 2,
-        dpr:window.devicePixelRatio || 1
+        dpr:window.devicePixelRatio || 1,
+        visible:true
       });
     });
+
+    if ('IntersectionObserver' in window) {
+      const visualizerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const visualizer = beatVisualizers.find((v) => v.wrapper === entry.target);
+          if (visualizer) visualizer.visible = entry.isIntersecting;
+        });
+      }, { threshold:0.01 });
+
+      beatVisualizers.forEach((visualizer) => visualizerObserver.observe(visualizer.wrapper));
+    }
 
     function resizeBeatVisualizer(v) {
       const size = Math.max(220, Math.round(v.canvas.offsetWidth));
@@ -2626,12 +2638,13 @@
     }
 
     function drawBeatVisualizers() {
-      if (modalOpen) {
+      if (modalOpen || document.hidden) {
         requestAnimationFrame(drawBeatVisualizers);
         return;
       }
 
       beatVisualizers.forEach((v) => {
+        if (lowPowerMotion && !v.visible) return;
         resizeBeatVisualizer(v);
 
         const { canvas, ctx, num, heights } = v;
