@@ -2586,6 +2586,18 @@
 
     const lowPowerMotion = window.matchMedia('(max-width:900px), (hover:none), (pointer:coarse)').matches;
     const visualizerBarCount = lowPowerMotion ? 84 : 120;
+    let scrollPerformanceMode = false;
+    let scrollResumeTimer;
+
+    if (lowPowerMotion) {
+      window.addEventListener('scroll', () => {
+        scrollPerformanceMode = true;
+        clearTimeout(scrollResumeTimer);
+        scrollResumeTimer = setTimeout(() => {
+          scrollPerformanceMode = false;
+        }, 140);
+      }, { passive:true });
+    }
 
     document.querySelectorAll('.beat-visualizer').forEach((canvas) => {
       const ctx = canvas.getContext('2d');
@@ -2638,7 +2650,7 @@
     }
 
     function drawBeatVisualizers() {
-      if (modalOpen || document.hidden) {
+      if (modalOpen || document.hidden || (lowPowerMotion && scrollPerformanceMode)) {
         requestAnimationFrame(drawBeatVisualizers);
         return;
       }
